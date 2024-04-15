@@ -1,1 +1,1 @@
-# SE452---Meal-and-Workout-Plan
+# SE452 Meal-and-Workout-Plan
