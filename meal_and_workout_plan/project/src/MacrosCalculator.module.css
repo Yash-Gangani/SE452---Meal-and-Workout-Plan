@@ -1,0 +1,39 @@
+.Header {
+  background-color: #e7be2d;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+  margin-top: 20px;
+  width: 500px;
+  padding-right: 20px;
+  border-radius: 10px;
+
+}
+
+.macrosCalculator {
+  background-color: #fdfbf4;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 500px;
+  flex: 1;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-gap: 10px; /* Spacing between rows */
+  align-items: center;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+
+}
+
+.table-cell {
+  padding: 10px; /* Adjust padding as needed */
+  text-align: left; /* For text alignment */
+  background: #fff; /* Background for cells, if needed */
+  margin-bottom: 5px; /* Spacing between cells, if needed */
+  overflow: auto; /* To prevent overflow */
+}

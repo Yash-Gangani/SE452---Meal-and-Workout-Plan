@@ -1,0 +1,38 @@
+.workoutPlan {
+  background-color: #ed6868;
+  border-radius: 10px;
+  padding: 20px;
+
+  width: 600px;
+  flex: 1;
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.day {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.day h3 {
+  margin: 0;
+}
+
+.day ul {
+  list-style: none;
+  padding: 0;
+}
+
+.day li {
+  background-color: white;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
