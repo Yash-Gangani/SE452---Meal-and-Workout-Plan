@@ -1,3 +1,32 @@
+# SE452 Object-Oriented Enterprise Applications
+
+## Depaul University / Spring 2024 / Group 6
+
+### Project Overview: 
+Meal and Workout Planning App
+
+### Project Members
+
+| **Name** | **Area** | 
+| ------------------------ | ---------------------------------------|
+| John Smillie | TBD |
+|   |   |
+|   |   |
+
+
+| **Key Features** | **Implemented** |
+| -------------------------------------------------------| ---- |
+| | |
+| | |
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
