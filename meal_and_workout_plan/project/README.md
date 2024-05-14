@@ -1,3 +1,40 @@
+# SE452 Object-Oriented Enterprise Applications
+
+## Depaul University / Spring 2024 / Group 6
+
+### Project Overview: 
+> Meal and Workout Planning App
+- The app is preloaded with meals, meal plans, workouts, and workout plans
+- Users can select a predefined meal plan or workout plan
+- Users can add/delete meals and workouts to be stored with their profile
+- Users can create/edit/delete meal plans and workout plans
+- Users can change their current meal plan or workout plan
+- Users login to their profile
+- Admins have full CRUD access to the predefined data
+- Application brain can suggest meals plans and workout plans based on user preferences and data
+
+### Project Members
+
+| **Name** | **Area** | 
+| ------------------------ | ---------------------------------------|
+| John Smillie | TBD |
+|   |   |
+|   |   |
+
+
+| **Key Features** | **Implemented** |
+| -------------------------------------------------------| ---- |
+| | |
+| | |
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
