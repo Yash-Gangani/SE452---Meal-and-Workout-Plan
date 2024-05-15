@@ -1,0 +1,12 @@
+#environment: development
+
+
+
+
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:b8
+    driverClassName: "org.h2.Driver"
+  jpa:
+    show-sql: true
