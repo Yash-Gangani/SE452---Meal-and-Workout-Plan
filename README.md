@@ -13,15 +13,40 @@
 - Admins have full CRUD access to the predefined data
 - Application brain can suggest meals plans and workout plans based on user preferences and data
 
-### Project Members
+## Project Members
 
-| **Name** | **Area** | 
-| ------------------------ | ---------------------------------------|
-| John Smillie | TBD |
-|   |   |
-|   |   |
+| Member | Area |
+| ----------- | ----------- | 
+| Yash Gangani | <a>Did Front-End design using ReactJS, HTML5 and CSS3, along with some back-end using Spring boot java.</a>
+| Shireesha Hanmantharaopet |  <a>Will be doing a bit of Front-end and Back-End using ReactJS and Spring Boot java. And documentation in Git Repo.</a>
+|Saad Mansuri | <a>Will be doing Back-End using Spring Boot and all the documentation related to Project.</a>
+| John Smillie | <a>Hello</a>
 
 
+<br/>
+
+## Conflict Resolution
+We will be using Discord for communication.
+
+<br/>
+
+## Communication Mechanism
+We will meet every Friday 5pm to 8pm on Discord, and in future, planning to meet at Loop Library.
+
+<br/>
+
+## Decision Made
+| # | Area  | Decision | Why using it? | 
+| ----------- | ----------- | --- | --- |
+| 1 | IDE | VS Code |Easy to use and install extensions.| 
+| 2 |Front-End design  | ReactJS, HTML5,CSS3 | Simple implementation for Web apps. |
+| 3 | Back-End Design  | Spring Boot Java | Easy to use and offers greater flexibility than it’s counterparts. |
+| 4 | UI/UX | Axure/Figma | Builds attractive UI/UX. |
+| 5 | Dependency | Maven | Widespread usage and simple configuration. |
+
+<br>
+
+## Implementation Table
 | **Key Features** | **Implemented** |
 | -------------------------------------------------------| ---- |
 | | |
@@ -29,11 +54,7 @@
 
 
 
-
-
-
-
-
+<br>
 
 # Getting Started with Create React App
 
