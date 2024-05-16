@@ -18,7 +18,7 @@ public class PersonRepositoryTest {
   private PersonRepository repo;
 
   @Test
-  public void testlombok(){
+  public void testLombok(){
 
     Person u1 = new Person();
     u1.setName("Tester");

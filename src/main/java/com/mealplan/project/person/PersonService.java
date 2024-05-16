@@ -17,7 +17,7 @@ public class PersonService {
     return listOfCA;
   }
 
-  public Person getPerson(Integer id){
+  public Person getPersonById(Integer id){
     return repo.findById(id).orElse(null);
   }
 

@@ -31,7 +31,7 @@ public class PersonRestController {
   
   @GetMapping("/{id}")
   public Person getPerson(@PathVariable Integer id){
-    return service.getPerson(id);
+    return service.getPersonById(id);
   }
 
   @PostMapping 

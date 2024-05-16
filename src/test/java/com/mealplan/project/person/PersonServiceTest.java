@@ -46,11 +46,11 @@ public class PersonServiceTest {
   
     service.save(p1);
 
-    Person p2 = service.getPerson(1);
+    Person p2 = service.getPersonById(1);
     p2.setAge(45);
     service.save(p2);
 
-    Person p3 = service.getPerson(1);
+    Person p3 = service.getPersonById(1);
 
     assertEquals("Harry", p3.getName());
     assertEquals(45, p3.getAge());
