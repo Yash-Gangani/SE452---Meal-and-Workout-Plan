@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mealplan.project.meal.MealType;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -39,8 +40,14 @@ public class PersonControllerTest {
   response.andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(count)));
  }
 
- public void getPersonByID(){
-  
+ @Test
+ public void testGetPersonByID() throws Exception{
+   Person p = Person.builder().name("Harry").age(29).gender(Gender.M).build();
+   repo.save(p);
+   ResultActions response = mvc.perform(MockMvcRequestBuilders.get(url + "/1"));
+   response.andExpect(MockMvcResultMatchers.status().isOk());
+   response.andExpect(MockMvcResultMatchers.jsonPath("$.name", CoreMatchers.is("Harry")));
+
  }
 
  @Test
