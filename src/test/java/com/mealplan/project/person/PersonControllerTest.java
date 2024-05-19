@@ -78,14 +78,14 @@ public class PersonControllerTest {
     repo.save(p);
     
     
-    long b4Count = repo.count();
+    long before = repo.count();
 
     var request = MockMvcRequestBuilders.delete(url+"/"+p.getId());
     ResultActions response = mvc.perform(request);
 
-    long afterCount = repo.count();
+    long after = repo.count();
     response.andExpect(MockMvcResultMatchers.status().isOk());
-    assertEquals(b4Count-1, afterCount);
+    assertEquals(before-1, after);
 
  }
 }
