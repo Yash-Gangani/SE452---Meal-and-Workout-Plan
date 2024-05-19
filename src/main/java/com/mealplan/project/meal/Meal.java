@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,9 +17,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Meal {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  //@GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  private MealType type;
+  private MealType t;
   @OneToOne
   private Nutrition nutrition;
 

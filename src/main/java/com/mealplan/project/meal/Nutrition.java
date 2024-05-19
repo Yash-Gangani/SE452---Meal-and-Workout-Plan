@@ -16,8 +16,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Nutrition {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  //@GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Integer id;
+
   private Integer fat;
   private Integer calories;
   private Integer sugar;
