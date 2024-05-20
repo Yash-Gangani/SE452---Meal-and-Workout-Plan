@@ -55,7 +55,8 @@ public class MealServiceTest {
 
   }
 
-  @Test void testDeleteMealById(){
+  @Test 
+  public void testDeleteMealById(){
     long before = service.list().size();
     service.deleteById(2);
     long after = service.list().size();
