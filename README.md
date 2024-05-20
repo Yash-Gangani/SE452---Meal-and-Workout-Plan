@@ -35,7 +35,7 @@
 | 5 | Dependency Management | Maven | Widespread usage and simple configuration. |
 | 6 | In-memory database | H2 | Simple volatile storage for the development environment |
 | 7 | Logging | Logback | Quick upstart (built into the Spring Web dependency) |
-| 9 | Automated start / stop actions | data.sql and auto create / drop |
+| 9 | Automated start / stop actions | data.sql and auto create / drop | |
 | 8 | Non-volatile persistence | TBD (Something SQL) | |
 | 10 | NoSQL persistence | TBD |  |
 | 11 | Build and Deploy | TBD | |
