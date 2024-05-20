@@ -16,12 +16,41 @@
 ## Project Members
 
 | Member | Area |
-| ----------- | ----------- | 
-| Yash Gangani | <a>Did Front-End design using ReactJS, HTML5 and CSS3, along with some back-end using Spring boot java.</a>
-| Shireesha Hanmantharaopet |  <a>Will be doing a bit of Front-end and Back-End using ReactJS and Spring Boot java. And documentation in Git Repo.</a>
-|Saad Mansuri | <a>Will be doing Back-End using Spring Boot and all the documentation related to Project.</a>
-| John Smillie | <a>Hello</a>
+| -- | -- | 
+| Yash Gangani | Did Front-End design using ReactJS, HTML5 and CSS3, along with some back-end using Spring boot java
+| Shireesha Hanmantharaopet | Will be doing a bit of Front-end and Back-End using ReactJS and Spring Boot java. And documentation in Git Repo
+|Saad Mansuri | Will be doing Back-End using Spring Boot and all the documentation related to Project.
+| John Smillie | Person and Meal packages and test packages, diagrams, data.sql |
 
+<br/>
+
+
+## Decision Made
+| # | Area  | Decision | Why using it? | 
+| -- | -- | -- | -- |
+| 1 | IDE | VS Code |Easy to use and install extensions.| 
+| 2 | Front-End design  | ReactJS, HTML5,CSS3 | Simple implementation for Web apps. |
+| 3 | Back-End Design  | Spring Boot Java | Easy to use and offers greater flexibility than it’s counterparts |
+| 4 | UI/UX | Axure/Figma | Builds attractive UI/UX. |
+| 5 | Dependency Management | Maven | Widespread usage and simple configuration. |
+| 6 | In-memory database | H2 | Simple volatile storage for the development environment |
+| 7 | Logging | Logback | Quick upstart (built into the Spring Web dependency) |
+| 9 | Automated start / stop actions | data.sql and auto create / drop |
+| 8 | Non-volatile persistence | TBD (Something SQL) | |
+| 10 | NoSQL persistence | TBD |  |
+| 11 | Build and Deploy | TBD | |
+|
+
+
+<br>
+
+## Implementation Table
+| **Key Features** | **Implemented** |
+| --| -- |
+| The database is initialized with preset meals/meal plans and workouts/ workout plans | no |
+| A user can select a meal plan or a workout plan to populate their schedule | no |
+| A user can add a meal or workout to their saved lists | no |
+| A user can create a custom meal plan or workout plan with existing meals or workouts | no |
 
 <br/>
 
@@ -35,26 +64,7 @@ We will meet every Friday 5pm to 8pm on Discord, and in future, planning to meet
 
 <br/>
 
-## Decision Made
-| # | Area  | Decision | Why using it? | 
-| ----------- | ----------- | --- | --- |
-| 1 | IDE | VS Code |Easy to use and install extensions.| 
-| 2 |Front-End design  | ReactJS, HTML5,CSS3 | Simple implementation for Web apps. |
-| 3 | Back-End Design  | Spring Boot Java | Easy to use and offers greater flexibility than it’s counterparts. |
-| 4 | UI/UX | Axure/Figma | Builds attractive UI/UX. |
-| 5 | Dependency | Maven | Widespread usage and simple configuration. |
-
-<br>
-
-## Implementation Table
-| **Key Features** | **Implemented** |
-| -------------------------------------------------------| ---- |
-| | |
-| | |
-
-
-
-<br>
+<br/>
 
 # Getting Started with Create React App
 
