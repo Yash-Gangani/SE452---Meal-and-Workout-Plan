@@ -6,27 +6,33 @@ import static org.mockito.Mockito.*;
 import java.util.Arrays;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.mockito.MockitoAnnotations;
 
+@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class MealPlanServiceTest {
 
     @Mock
     private MealPlanRepository mealPlanRepository;
 
+    @Autowired
     @InjectMocks
     private MealPlanService mealPlanService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    void testList() {
+    public void testList() {
         MealPlan mealPlan1 = MealPlan.builder().id(1).name("Plan 1").build();
         MealPlan mealPlan2 = MealPlan.builder().id(2).name("Plan 2").build();
         
@@ -39,7 +45,7 @@ public class MealPlanServiceTest {
     }
 
     @Test
-    void testGetMealPlanById() {
+    public void testGetMealPlanById() {
         MealPlan mealPlan = MealPlan.builder().id(1).name("Plan 1").build();
         
         when(mealPlanRepository.findById(1)).thenReturn(Optional.of(mealPlan));
@@ -52,7 +58,7 @@ public class MealPlanServiceTest {
     }
 
     @Test
-    void testSave() {
+    public void testSave() {
         MealPlan mealPlan = MealPlan.builder().id(1).name("Plan 1").build();
         
         when(mealPlanRepository.save(mealPlan)).thenReturn(mealPlan);
@@ -65,7 +71,7 @@ public class MealPlanServiceTest {
     }
 
     @Test
-    void testDelete() {
+    public void testDelete() {
         MealPlan mealPlan = MealPlan.builder().id(1).name("Plan 1").build();
         
         mealPlanService.delete(mealPlan);
@@ -74,7 +80,7 @@ public class MealPlanServiceTest {
     }
 
     @Test
-    void testDeleteById() {
+    public void testDeleteById() {
         mealPlanService.deleteById(1);
         
         verify(mealPlanRepository, times(1)).deleteById(1);
