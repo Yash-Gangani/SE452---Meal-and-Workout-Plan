@@ -19,7 +19,7 @@ public class MealPlan {
 
     private String name;
 
-    @OneToMany
+    @ManyToMany
     private List<Meal> meals;
     
 }
