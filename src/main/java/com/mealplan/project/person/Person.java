@@ -1,8 +1,10 @@
 package com.mealplan.project.person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mealplan.project.meal.Meal;
+import com.mealplan.project.mealplan.MealPlan;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,10 +21,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Person {
 
-
+  public Person(){
+    this.meals = new ArrayList<>();
+    this.mealPlans = new ArrayList<>();
+  }
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Integer id;
@@ -34,4 +39,6 @@ public class Person {
   private Double weight;
   @ManyToMany(fetch = FetchType.EAGER)
   private List<Meal> meals;
+  @ManyToMany(fetch = FetchType.EAGER)
+  private List<MealPlan> mealPlans;
 }
