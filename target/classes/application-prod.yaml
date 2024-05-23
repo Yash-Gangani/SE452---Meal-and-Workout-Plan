@@ -1,0 +1,10 @@
+server:
+  port: 8000
+
+spring:
+  
+  data:
+    redis:
+    # change required -- how does this work?
+      host: "localhost"
+      port: 6379  
