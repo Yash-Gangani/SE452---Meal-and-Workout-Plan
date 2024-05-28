@@ -19,8 +19,8 @@
 | -- | -- | 
 | Yash Gangani | Did Front-End design using ReactJS, HTML5 and CSS3, along with some back-end using Spring boot java
 | Shireesha Hanmantharaopet | Will be doing a bit of Front-end and Back-End using ReactJS and Spring Boot java. And documentation in Git Repo
-|Saad Mansuri | Will be doing Back-End using Spring Boot and all the documentation related to Project.
-| John Smillie | Person and Meal packages and test packages, diagrams, data.sql |
+| Saad Mansuri | Will be doing Back-End using Spring Boot and all the documentation related to Project.
+| John Smillie | Person and Meal packages and test packages, diagrams, data.sql, h2 database setup, GitHub Actions integration |
 
 <br/>
 
@@ -38,7 +38,7 @@
 | 9 | Automated start / stop actions | data.sql and auto create / drop | |
 | 8 | Non-volatile persistence | TBD (Something SQL) | |
 | 10 | NoSQL persistence | TBD |  |
-| 11 | Build and Deploy | TBD | |
+| 11 | Build and Deploy | Github Actions | CI with build analysis for each push to the repo |
 |
 
 
