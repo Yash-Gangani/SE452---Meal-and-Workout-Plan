@@ -1,4 +1,5 @@
 package com.mealplan.project.person;
+import com.mealplan.project.mealplan.MealPlan;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,9 +9,13 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import com.mealplan.project.meal.Meal;
 import com.mealplan.project.meal.MealRepository;
+import com.mealplan.project.meal.MealType;
+import com.mealplan.project.meal.Nutrition;
+import com.mealplan.project.meal.NutritionRepository;
 import com.mealplan.project.mealplan.MealPlanRepository;
 
 
@@ -22,6 +27,8 @@ public class PersonRepositoryTest {
   private PersonRepository personRepo;
   @Autowired
   private MealRepository mealRepo;
+  @Autowired
+  private NutritionRepository nRepo;
   @Autowired
   private MealPlanRepository mpRepo;
 
@@ -84,8 +91,88 @@ public class PersonRepositoryTest {
 
   }
   @Test
-  public void testAddMeal(){
-    
+  public void testMealAndPersonRepository(){
+
+    Meal m1 = mealRepo.findById(1).orElseThrow();
+    Person p1 = Person.builder().name("Harry").age(29).gender(Gender.M).meals(new ArrayList<>()).build();
+    p1.getMeals().add(m1);
+    personRepo.save(p1);
+
+    Person p2 = personRepo.findById(1).orElseThrow();
+    assertEquals(1, p2.getMeals().size());
+
+    Nutrition n1 = Nutrition.builder().id(3).calories(1900).fat(13).sugar(8).build();
+    nRepo.save(n1);
+    Meal m2 = Meal.builder().id(3).t(MealType.PROTEIN_HEAVY).nutrition(n1).build();
+    mealRepo.save(m2);
+    assertEquals(3, mealRepo.count());
+
+    p2.getMeals().add(m2);
+    personRepo.save(p2);
+    Person p3 = personRepo.findById(1).orElseThrow();
+    assertEquals(2, p3.getMeals().size());
+
+    p3.getMeals().remove(1);
+    personRepo.save(p3);
+    Person p4 = personRepo.findById(1).orElseThrow();
+    assertEquals(1, p4.getMeals().size());
+
+    personRepo.deleteById(1);
+    assertEquals(0, personRepo.count());
+
+    assertEquals(3, mealRepo.count());
+  }
+
+  @Test
+  public void testMealAndMealPlanAndPersonRepository(){
+
+    Person p1 = Person.builder().name("Harry").age(29).gender(Gender.M).meals(new ArrayList<>()).mealPlans(new ArrayList<>()).build();
+    personRepo.save(p1);
+
+    MealPlan mp1 = new MealPlan();
+    mp1.setMeals(new ArrayList<>());
+
+    MealPlan mp2 = new MealPlan();
+    mp2.setMeals(new ArrayList<>());
+
+    Meal m1 = mealRepo.findById(1).orElseThrow();
+    Meal m2 = mealRepo.findById(2).orElseThrow();
+    mp1.getMeals().add(m1);
+    mp1.getMeals().add(m2);
+    mpRepo.save(mp1);
+    mp2.getMeals().add(m1);
+    mp2.getMeals().add(m2);
+    mpRepo.save(mp2);
+    assertEquals(2, mpRepo.count());
+
+    Person p2 = personRepo.findById(1).orElseThrow();
+    p2.getMeals().add(m1);
+    p2.getMeals().add(m2);
+    p2.getMealPlans().add(mp1);
+    p2.getMealPlans().add(mp2);
+    personRepo.save(p2);
+    Person p3 = personRepo.findById(1).orElseThrow();
+    assertEquals(1, personRepo.count());
+    assertEquals(2, p3.getMeals().size());
+    assertEquals(2, p3.getMealPlans().size());
+
+    MealPlan mp3 = p3.getMealPlans().get(1);
+    mp3.getMeals().remove(1);
+    mpRepo.save(mp3);
+    //personRepo.save(p3); 
+
+    Person p4 = personRepo.findById(1).orElseThrow();
+    MealPlan mp4  = p4.getMealPlans().get(1);
+    assertEquals(1, mp4.getMeals().size());
+
+    p4.getMealPlans().remove(1);
+    personRepo.save(p4);
+
+    Person p5 = personRepo.findById(1).orElseThrow();
+    assertEquals(1, p5.getMealPlans().size());
+
+
+
   }
  
   
