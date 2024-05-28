@@ -19,7 +19,7 @@ public class MealPlan {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Meal> meals;
     
 }
