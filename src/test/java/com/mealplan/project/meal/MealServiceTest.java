@@ -48,7 +48,7 @@ public class MealServiceTest {
   @Test
   public void testDeleteMeal(){
     long before = service.list().size();
-    Meal m1 = service.getMealById(2);
+    Meal m1 = service.getMealById(1);
     service.delete(m1);
     long after = service.list().size();
     assertEquals(before-1, after);

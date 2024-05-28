@@ -59,7 +59,7 @@ public class PersonServiceTest {
 
   @Test
   public void testAddMealToList(){
-
+    long before = personService.list().size();
     Meal m1 = mealService.getMealById(1);
     Meal m2 = mealService.getMealById(2);
     Person p1 = new Person();
@@ -68,13 +68,13 @@ public class PersonServiceTest {
     p1.getMeals().add(m1);
     personService.save(p1);
     personService.addMeal(p1, m2);
-    assertEquals(2, personService.list().get(0).getMeals().size());
-    assertEquals(1, personService.list().size());
+    assertEquals(2, personService.list().get(personService.list().size()-1).getMeals().size());
+    assertEquals(before+1, personService.list().size());
   }
 
   @Test
   public void testDeleteMealFromList(){
-
+    long before = personService.list().size();
     Meal m1 = mealService.getMealById(1);
     Meal m2 = mealService.getMealById(2);
     Person p1 = new Person();
@@ -84,7 +84,7 @@ public class PersonServiceTest {
     personService.save(p1);
     personService.deleteMeal(p1, m1);
     assertEquals(0, personService.list().get(0).getMeals().size());
-    assertEquals(1, personService.list().size());
+    assertEquals(before+1, personService.list().size());
   }
 
   @Test

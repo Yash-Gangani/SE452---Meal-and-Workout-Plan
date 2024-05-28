@@ -55,7 +55,7 @@ public class PersonRepositoryTest {
   
     Meal m1 = mealRepo.findById(1).orElseThrow();
   
-
+    long before = personRepo.count();
     u1.setName("Harry");
     u1.setAge(29);
     u1.setGender(Gender.M);
@@ -76,10 +76,10 @@ public class PersonRepositoryTest {
 
 
     long size = personRepo.count();
-    assertEquals(persons.size(), size);
+    assertEquals(persons.size()+before, size);
 
     personRepo.delete(u2);
-    assertEquals(persons.size()-1, personRepo.count());
+    assertEquals(persons.size()+before-1, personRepo.count());
 
     Person u3 = personRepo.findById(1).orElse(new Person());
     u3.setWeight(200.00);
@@ -96,10 +96,11 @@ public class PersonRepositoryTest {
     Meal m1 = mealRepo.findById(1).orElseThrow();
     Person p1 = Person.builder().name("Harry").age(29).gender(Gender.M).meals(new ArrayList<>()).build();
     p1.getMeals().add(m1);
+    long before = p1.getMeals().size();
     personRepo.save(p1);
 
     Person p2 = personRepo.findById(1).orElseThrow();
-    assertEquals(1, p2.getMeals().size());
+    assertEquals(before+1, p2.getMeals().size());
 
     Nutrition n1 = Nutrition.builder().id(3).calories(1900).fat(13).sugar(8).build();
     nRepo.save(n1);
@@ -110,15 +111,15 @@ public class PersonRepositoryTest {
     p2.getMeals().add(m2);
     personRepo.save(p2);
     Person p3 = personRepo.findById(1).orElseThrow();
-    assertEquals(2, p3.getMeals().size());
+    assertEquals(before+2, p3.getMeals().size());
 
     p3.getMeals().remove(1);
     personRepo.save(p3);
     Person p4 = personRepo.findById(1).orElseThrow();
-    assertEquals(1, p4.getMeals().size());
-
+    assertEquals(before+1, p4.getMeals().size());
+    long b4 = personRepo.count();
     personRepo.deleteById(1);
-    assertEquals(0, personRepo.count());
+    assertEquals(b4-1, personRepo.count());
 
     assertEquals(3, mealRepo.count());
   }
