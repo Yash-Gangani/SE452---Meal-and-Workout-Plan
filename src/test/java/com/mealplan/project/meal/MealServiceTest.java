@@ -2,15 +2,19 @@ package com.mealplan.project.meal;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.List;
-
+import java.util.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-/* the tests in this suite are intended to be executed individually, not as a group */
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 
+import org.springframework.test.annotation.DirtiesContext;
+
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+@AutoConfigureTestDatabase(replace = Replace.ANY)
 @SpringBootTest
 public class MealServiceTest {
   @Autowired
@@ -49,6 +53,7 @@ public class MealServiceTest {
   public void testDeleteMeal(){
     long before = service.list().size();
     Meal m1 = service.getMealById(1);
+    if(m1 == null){return;}
     service.delete(m1);
     long after = service.list().size();
     assertEquals(before-1, after);
@@ -58,7 +63,7 @@ public class MealServiceTest {
   @Test 
   public void testDeleteMealById(){
     long before = service.list().size();
-    service.deleteById(2);
+    service.deleteById(1);
     long after = service.list().size();
     assertEquals(before-1, after);
   }

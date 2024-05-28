@@ -4,11 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import com.mealplan.project.meal.Meal;
 import com.mealplan.project.meal.MealService;
-
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+@AutoConfigureTestDatabase(replace = Replace.ANY)
 @SpringBootTest
 public class PersonServiceTest {
   
@@ -42,6 +47,7 @@ public class PersonServiceTest {
   @Test
   public void testGetAndUpdatePerson(){
     Person p1 = new Person();
+    p1.setId(1);
     p1.setName("Harry");
     p1.setAge(29);
   
