@@ -22,7 +22,14 @@ public class MealService {
  }
 
  public Meal getMealById(Integer id){
-  return repo.findById(id).orElse(null);
+  Meal m1 = null;
+  try{
+    logger.debug("retrieving meal by id {}", id);
+    m1 = repo.findById(id).orElseThrow();
+  }catch(Exception e){
+    logger.error("Repo call findById({})",id, e);
+  }
+  return m1;
  }
 
  public Meal save(Meal meal){

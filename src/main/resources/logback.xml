@@ -34,7 +34,7 @@
         <file>${LOGS}/spring-boot-logger.log</file>
         <encoder
                 class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            <Pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</Pattern>
         </encoder>
 
         <rollingPolicy
@@ -58,7 +58,7 @@
         </filter>
         <encoder
                 class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            <Pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</Pattern>
         </encoder>
 
         <rollingPolicy
