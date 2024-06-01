@@ -37,11 +37,13 @@ public class MealRepositoryTest {
     long before = repo.count();
     Nutrition n1 = Nutrition.builder().id(5).calories(500).fat(14).sugar(5).build();
     repoN.save(n1);
-    Meal m1 = Meal.builder().id(5).t(MealType.NORMAL).nutrition(n1).build();
+    Meal m1 = Meal.builder().t(MealType.NORMAL).nutrition(n1).build();
+   
+   
 
     Nutrition n2 = Nutrition.builder().id(6).calories(400).fat(20).sugar(5).build();
     repoN.save(n2);
-    Meal m2 = Meal.builder().id(6).t(MealType.NORMAL).nutrition(n2).build();
+    Meal m2 = Meal.builder().t(MealType.NORMAL).nutrition(n2).build();
 
     repo.save(m1);
     repo.save(m2);
