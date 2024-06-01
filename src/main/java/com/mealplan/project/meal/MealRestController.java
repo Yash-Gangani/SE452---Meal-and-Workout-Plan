@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/meals")
+@RequestMapping("/meal")
 public class MealRestController {
   @Autowired
   private MealService service;

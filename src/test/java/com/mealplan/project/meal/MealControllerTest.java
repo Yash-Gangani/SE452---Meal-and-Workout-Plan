@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MealControllerTest {
-  private static final String url = "/meals";
+  private static final String url = "/meal";
 
   @Autowired
   private MealRepository repo;
@@ -56,9 +56,9 @@ public class MealControllerTest {
   @Test
   public void testAddMeal() throws Exception{
     var before = (int) repo.count();
-    Nutrition n1 = Nutrition.builder().id(10).calories(2500).fat(30).sugar(25).build();
+    Nutrition n1 = Nutrition.builder().calories(2500).fat(30).sugar(25).build();
     repoN.save(n1);
-    Meal m1 = Meal.builder().id(10).t(MealType.NORMAL).nutrition(n1).build();
+    Meal m1 = Meal.builder().t(MealType.NORMAL).nutrition(n1).build();
     String mealAsJson = objectMapper.writeValueAsString(m1);
 
     var request = MockMvcRequestBuilders.post(url);
