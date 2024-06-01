@@ -29,7 +29,7 @@ public class Person {
     this.mealPlans = new ArrayList<>();
   }
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   private String name;
