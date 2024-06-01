@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Meal {
   @Id
-  //@GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private MealType t;
   @OneToOne
