@@ -32,9 +32,9 @@ public class MealServiceTest {
   @Test
   public void testAddMeal(){
     long before = service.list().size();
-    Nutrition n1 = Nutrition.builder().id(100).calories(650).fat(25).build();
+    Nutrition n1 = Nutrition.builder().calories(650).fat(25).build();
     repoN.save(n1);
-    service.save(Meal.builder().id(100).t(MealType.LOW_CARB).nutrition(n1).build());
+    service.save(Meal.builder().t(MealType.LOW_CARB).nutrition(n1).build());
     long after = service.list().size();
     assertEquals(before+1, after);
   }
