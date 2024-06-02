@@ -69,11 +69,13 @@ public class MealControllerTest {
 
     var jsonResponse = response.andReturn().getResponse().getContentAsString();
     Meal meal = objectMapper.readValue(jsonResponse, Meal.class);
+    Meal m2 = repo.findById(meal.getId()).orElse(null);
 
     response.andExpect(MockMvcResultMatchers.status().isOk());
 
-    assertEquals(10,meal.getId());
-    assertEquals(2500, meal.getNutrition().getCalories());
+    assertEquals(before+1, repo.count());
+    assertEquals(meal, m2);
+    
   }
 
   @Test
