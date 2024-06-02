@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 @RequestMapping("/meal")
 public class MealRestController {
@@ -29,7 +31,7 @@ public class MealRestController {
     return service.list();
   }
 
-  @GetMapping("/{id}")
+  //GetMapping
   public Meal getMeal(@PathVariable Integer id){
     return service.getMealById(id);
   }
