@@ -2,6 +2,8 @@ package com.mealplan.project.person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mealplan.project.meal.MealType;
 
@@ -44,7 +47,13 @@ public class PersonControllerTest {
  public void testGetPersonByID() throws Exception{
    Person p = Person.builder().name("Harry").age(29).gender(Gender.M).build();
    repo.save(p);
-   ResultActions response = mvc.perform(MockMvcRequestBuilders.get(url + "/1"));
+
+   ResultActions response = mvc.perform(MockMvcRequestBuilders.get(url));
+   var jsonResponse = response.andReturn().getResponse().getContentAsString();
+   ArrayList<Person> personList = objectMapper.readValue(jsonResponse, new TypeReference<ArrayList<Person>>(){});
+   Integer id = personList.get(0).getId();
+   
+   response = mvc.perform(MockMvcRequestBuilders.get(url+"/"+id));
    response.andExpect(MockMvcResultMatchers.status().isOk());
    response.andExpect(MockMvcResultMatchers.jsonPath("$.name", CoreMatchers.is("Harry")));
 
