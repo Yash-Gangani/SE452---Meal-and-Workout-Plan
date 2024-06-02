@@ -31,7 +31,7 @@ public class MealRestController {
     return service.list();
   }
 
-  //GetMapping
+  @GetMapping("/{id}")
   public Meal getMeal(@PathVariable Integer id){
     return service.getMealById(id);
   }
