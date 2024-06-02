@@ -2,6 +2,8 @@ package com.mealplan.project.meal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.*;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -44,12 +47,17 @@ public class MealControllerTest {
 
   @Test
   public void testGetMealById() throws Exception{
-    ResultActions response = mvc.perform(MockMvcRequestBuilders.get(url+"/1"));
+    ResultActions response = mvc.perform(MockMvcRequestBuilders.get(url));
     response.andExpect(MockMvcResultMatchers.status().isOk());
 
     var jsonResponse = response.andReturn().getResponse().getContentAsString();
-    Meal meal = objectMapper.readValue(jsonResponse, Meal.class);
-    assertEquals(1000, meal.getNutrition().getCalories());
+    ArrayList<Meal> mealList = objectMapper.readValue(jsonResponse, new TypeReference<ArrayList<Meal>>(){});
+    Integer id = mealList.get(0).getId();
+    Integer caloriesTest = mealList.get(0).getNutrition().getCalories();
+    response = mvc.perform(MockMvcRequestBuilders.get(url+"/"+id));
+    jsonResponse = response.andReturn().getResponse().getContentAsString();
+    Meal meal =  objectMapper.readValue(jsonResponse, Meal.class);
+    assertEquals(caloriesTest, meal.getNutrition().getCalories());
     
   }
 
@@ -81,9 +89,15 @@ public class MealControllerTest {
   @Test
   public void testDeleteMeal() throws Exception{
     long before = repo.count();
+    ResultActions response = mvc.perform(MockMvcRequestBuilders.get(url));
+    response.andExpect(MockMvcResultMatchers.status().isOk());
+    var jsonResponse = response.andReturn().getResponse().getContentAsString();
 
-    var request = MockMvcRequestBuilders.delete(url+"/2");
-    ResultActions response = mvc.perform(request);
+    ArrayList<Meal> mealList = objectMapper.readValue(jsonResponse, new TypeReference<ArrayList<Meal>>(){});
+    Integer id = mealList.get(0).getId();
+    
+    var request = MockMvcRequestBuilders.delete(url+"/"+id);
+    response = mvc.perform(request);
 
     long after = repo.count();
     assertEquals(before-1, after);
