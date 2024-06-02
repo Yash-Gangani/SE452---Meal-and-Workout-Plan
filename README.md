@@ -19,7 +19,7 @@
 | Yash Gangani | |
 | Shireesha Hanmantharaopet | MealPlan package and test packages |
 | Saad Mansuri | |
-| John Smillie | - Person and Meal packages <br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - h2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration<br/> - Logback.xml file<br/> - config files and settings: dev and prod<br/> |
+| John Smillie | - Person and Meal packages <br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - h2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration<br/> - Logback.xml file<br/> - config files and settings: dev and prod<br/> - OpenAPI integration<br/> |
 
 
 <br/>
@@ -31,15 +31,14 @@
 | 1 | IDE | VS Code |Easy to use and install extensions.| 
 | 2 | Front-End design  | ReactJS, HTML5,CSS3 | Simple implementation for Web apps. |
 | 3 | Back-End Design  | Spring Boot Java | Easy to use and offers greater flexibility than it’s counterparts |
-| 4 | UI/UX | Axure/Figma | Builds attractive UI/UX. |
-| 5 | Dependency Management | Maven | Widespread usage and simple configuration. |
-| 6 | In-memory database | H2 | Simple volatile storage for the development environment |
-| 7 | Logging | Logback | Quick upstart (built into the Spring Web dependency) |
-| 9 | Automated start / stop actions | data.sql and auto create / drop | |
+| 4 | Dependency Management | Maven | Widespread usage and simple configuration. |
+| 5 | In-memory database | H2 | Simple volatile storage for the development environment |
+| 6 | Logging | Logback | Quick upstart (built into the Spring Web dependency) |
+| 7 | Automated start / stop actions | data.sql and auto create / drop | |
 | 8 | Non-volatile persistence | Oracle | CSC453 Oracle DB still available. Compatibility with JPA annoatations |
-| 10 | NoSQL persistence | TBD |  |
-| 11 | Build and Deploy | Github Actions | CI with build analysis for each push to the repo |
-|
+| 9 | NoSQL persistence | TBD |  |
+| 10 | Build and Deploy | Github Actions | CI with build analysis for each push to the repo |
+| 11 | Documentation | Spring OpenAPI | runtime publishing of REST documentation |
 
 
 <br>
