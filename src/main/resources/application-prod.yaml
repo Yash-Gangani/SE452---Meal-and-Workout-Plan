@@ -1,10 +1,24 @@
 server:
-  port: 8000
+  port: 8011
 
 spring:
   
-  data:
-    redis:
+ # data:
+    #redis:
     # change required -- how does this work?
-      host: "localhost"
-      port: 6379  
+    # host: "localhost"
+    # port: 6379  
+
+  datasource:
+    url: "jdbc:oracle:thin:@acadoradbprd01.dpu.depaul.edu:1521:ACADPRD0"
+    driver-class-name: "oracle.jdbc.driver.OracleDriver"
+    username: "jsmillie"  
+    password: "cdm2054349"
+    name: "DepaulSampleDB"
+   
+
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    defer-datasource-initialization: true
+    

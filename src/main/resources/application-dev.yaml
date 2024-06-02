@@ -1,11 +1,19 @@
 #environment: development
 
-
+server:
+  port: 8001
 spring:
   datasource:
-    url: jdbc:h2:mem:g6
+    url: jdbc:h2:mem:g6;Mode=Oracle;DEFAULT_NULL_ORDERING=HIGH;DATABASE_TO_LOWER=TRUE
     driverClassName: "org.h2.Driver"
+    
   jpa:
     show-sql: true
     hibernate.ddl-auto: create-drop
     defer-datasource-initialization: true
+   #data:
+    #redis:
+     # host: "localhost"
+      #port: 6379  
+
+  
