@@ -3,24 +3,24 @@
 ## Depaul University / Spring 2024 / Group 6
 
 ### Project Overview: 
-> Meal and Workout Planning App
-- The app is preloaded with meals, meal plans, workouts, and workout plans
-- Users can select a predefined meal plan or workout plan
-- Users can add/delete meals and workouts to be stored with their profile
-- Users can create/edit/delete meal plans and workout plans
-- Users can change their current meal plan or workout plan
-- Users login to their profile
+> Meal Planning App
+- The app is preloaded with meals, meal plans
+- Users can select a predefined meal plan
+- Users can add/delete meals to be stored with their profile
+- Users can create/edit/delete meal plans
+- Users can change their current meal plan
 - Admins have full CRUD access to the predefined data
-- Application brain can suggest meals plans and workout plans based on user preferences and data
+
 
 ## Project Members
 
 | Member | Area |
 | -- | -- | 
-| Yash Gangani | Did Front-End design using ReactJS, HTML5 and CSS3, along with some back-end using Spring boot java
-| Shireesha Hanmantharaopet | Will be doing a bit of Front-end and Back-End using ReactJS and Spring Boot java. And documentation in Git Repo
-| Saad Mansuri | Will be doing Back-End using Spring Boot and all the documentation related to Project.
-| John Smillie | Person and Meal packages and test packages, diagrams, data.sql, h2 database setup, GitHub Actions integration |
+| Yash Gangani | |
+| Shireesha Hanmantharaopet | MealPlan package and test packages |
+| Saad Mansuri | |
+| John Smillie | - Person and Meal packages <br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - h2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration<br/> - Logback.xml file<br/> - config files and settings: dev and prod<br/> |
+
 
 <br/>
 
@@ -36,7 +36,7 @@
 | 6 | In-memory database | H2 | Simple volatile storage for the development environment |
 | 7 | Logging | Logback | Quick upstart (built into the Spring Web dependency) |
 | 9 | Automated start / stop actions | data.sql and auto create / drop | |
-| 8 | Non-volatile persistence | TBD (Something SQL) | |
+| 8 | Non-volatile persistence | Oracle | CSC453 Oracle DB still available. Compatibility with JPA annoatations |
 | 10 | NoSQL persistence | TBD |  |
 | 11 | Build and Deploy | Github Actions | CI with build analysis for each push to the repo |
 |
@@ -48,7 +48,7 @@
 | **Key Features** | **Implemented** |
 | --| -- |
 | The database is initialized with preset meals/meal plans and workouts/ workout plans | no |
-| A user can select a meal plan or a workout plan to populate their schedule | no |
+| A user can select a preset meal to add to their meal list| no |
 | A user can add a meal or workout to their saved lists | no |
 | A user can create a custom meal plan or workout plan with existing meals or workouts | no |
 
