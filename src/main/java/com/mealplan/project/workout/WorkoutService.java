@@ -20,6 +20,7 @@ public class WorkoutService {
         try {
             List<Workout> workouts = workoutRepository.findAll();
             log.info("Retrieved {} workouts successfully", workouts.size());
+            for(Workout ws : workouts){log.info("Retrieved workout -> id: {} -> type: {} -> details: {}", ws.getId(), ws.type, ws.getDetails());}
             return workouts;
         } catch (Exception e) {
             log.error("Error occurred while retrieving workouts: {}", e.getMessage(), e);
@@ -28,10 +29,10 @@ public class WorkoutService {
     }
 
     public Workout getWorkoutById(int id) {
-        log.info("Begun retrieving workout with ID: {}", id);
+        log.info("Begun retrieving workout by ID: {}", id);
         try {
             Workout workout = workoutRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Workout not found"));
-            log.info("Retrieved workout with ID: {} successfully", id);
+            log.info("Retrieved workout with ID: {} -> type: {} -> details: {}: successfully", id, workout.type, workout.getDetails());
             return workout;
         } catch (NoSuchElementException e) {
             log.warn("No workout found with ID: {}", id);
@@ -43,10 +44,10 @@ public class WorkoutService {
     }
 
     public void deleteWorkout(Workout workout) {
-        log.info("Begun deleting workout with ID: {}", workout.getId());
+        log.info("Begun deleting workout with ID: {} -> type: {} -> details: {}", workout.getId(), workout.type, workout.getDetails());
         try {
             workoutRepository.delete(workout);
-            log.info("Deleted workout with ID: {}", workout.getId());
+            log.info("Deleted workout with ID: {} -> type: {} -> details: {}", workout.getId(), workout.type, workout.getDetails());
         } catch (Exception e) {
             log.error("Error occurred while deleting workout with ID {}: {}", workout.getId(), e.getMessage(), e);
             throw e;
@@ -55,10 +56,10 @@ public class WorkoutService {
 
     @SuppressWarnings("null")
     public Workout save(Workout workout) {
-       log.info("Begun saving workout with id: {}", workout != null && workout.getId() != null ? workout.getId() : "null");
+       log.info("Begun saving workout with id: {} -> type: {} -> details: {}", workout != null && workout.getId() != null ? workout.getId() : "null", workout.getType(), workout.getDetails());
        try {
           Workout savedWorkout = workoutRepository.save(workout);
-          log.info("Saving Workout with id: {} successfully!", savedWorkout.getId());
+          log.info("Saving Workout with id: {} -> type: {} -> details: {}: successfully!", savedWorkout.getId(), workout.getType(), workout.getDetails());
           return savedWorkout;
        } catch (Exception e) {
           log.error("Saving Workout with id: {} unsuccessful! Exception: {}", workout != null && workout.getId() != null ? workout.getId() : "null", e.getMessage(), e);
