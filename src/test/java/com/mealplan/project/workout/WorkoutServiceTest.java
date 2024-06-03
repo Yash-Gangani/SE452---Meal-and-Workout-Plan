@@ -33,8 +33,7 @@ public class WorkoutServiceTest {
     @Test
     public void testList() {
         when(WorkoutRepository.findAll()).thenReturn(Arrays.asList(Workout.builder().id(1).type(WorkoutType.NORMAL).details("Normal workout").build(), Workout.builder().id(2).type(WorkoutType.STRENGTH).details("Strength workout").build()));
-        var workouts = WorkoutService.list();
-        assertEquals(2, workouts.size());
+        assertEquals(2, WorkoutService.list().size());
         verify(WorkoutRepository, times(1)).findAll();
     }
 
