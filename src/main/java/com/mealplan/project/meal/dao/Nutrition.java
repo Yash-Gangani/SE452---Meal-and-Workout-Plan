@@ -1,4 +1,4 @@
-package com.mealplan.project.meal;
+package com.mealplan.project.meal.dao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

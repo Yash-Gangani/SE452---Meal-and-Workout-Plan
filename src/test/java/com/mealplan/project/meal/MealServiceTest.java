@@ -13,6 +13,11 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.test.annotation.DirtiesContext;
 
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
+
+import com.mealplan.project.meal.dao.Meal;
+import com.mealplan.project.meal.dao.MealType;
+import com.mealplan.project.meal.dao.Nutrition;
+import com.mealplan.project.meal.dao.NutritionRepository;
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = Replace.ANY)
 @SpringBootTest
@@ -34,7 +39,7 @@ public class MealServiceTest {
     long before = service.list().size();
     Nutrition n1 = Nutrition.builder().calories(650).fat(25).build();
     repoN.save(n1);
-    service.save(Meal.builder().t(MealType.LOW_CARB).nutrition(n1).build());
+    service.create(Meal.builder().t(MealType.LOW_CARB).nutrition(n1).build());
     long after = service.list().size();
     assertEquals(before+1, after);
   }
@@ -43,7 +48,7 @@ public class MealServiceTest {
   public void testGetandUpdateMeal(){
     Meal m1 = service.getMealById(1);
     m1.setT(MealType.LOW_CARB);
-    service.save(m1);
+    service.create(m1);
 
     Meal m2 = service.getMealById(1);
     assertEquals(m1.getT(), m2.getT());

@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mealplan.project.meal.dao.Meal;
+import com.mealplan.project.meal.dao.MealRepository;
+
 
 
 @Service
@@ -18,24 +21,42 @@ public class MealService {
  static final Logger logger = LoggerFactory.getLogger(MealService.class);
 
  public List<Meal> list(){
-  return StreamSupport.stream(repo.findAll().spliterator(), false).collect(Collectors.toList());
- }
+  logger.debug("retrieving meal list from meal repo");
+  List<Meal> list = null;
+  try{
+    list = StreamSupport.stream(repo.findAll().spliterator(), false).collect(Collectors.toList());
+    logger.info("successfully retrieved meal list");
+  }catch(Exception e){
+    logger.error("Error retrieving meal list from meal repo");
+  }
+  return list;
+
+}
 
  public Meal getMealById(Integer id){
   Meal m1 = null;
+  logger.debug("Begin retrieving meal by id {}", id);
   try{
-    logger.debug("retrieving meal by id {}", id);
     m1 = repo.findById(id).orElseThrow();
+    logger.info("Found meal id {}", id);
   }catch(Exception e){
     logger.error("Repo call findById({})",id, e);
   }
+  logger.debug("Successfully returning meal id {}", id);
   return m1;
  }
 
- public Meal save(Meal meal){
-  logger.info("Begin saving into Meal table");
-  repo.save(meal);
-  logger.info("End saving into Meal");
+ public Meal create(Meal meal){
+  logger.debug("Begin saving to the meal repo meal {}", meal.toString());
+  try{
+    repo.save(meal);
+    logger.info("Successfully saved meal {}", meal.toString());
+  }
+  catch(Exception e){
+    logger.error("Saving to the meal repo meal {}", meal.toString());
+  }
+ 
+  logger.debug("End saving into Meal");
   return meal;
  }
  

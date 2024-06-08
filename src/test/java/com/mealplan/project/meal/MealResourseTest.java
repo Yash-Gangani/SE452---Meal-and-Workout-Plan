@@ -17,11 +17,16 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mealplan.project.meal.dao.Meal;
+import com.mealplan.project.meal.dao.MealRepository;
+import com.mealplan.project.meal.dao.MealType;
+import com.mealplan.project.meal.dao.Nutrition;
+import com.mealplan.project.meal.dao.NutritionRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MealControllerTest {
-  private static final String url = "/meal";
+public class MealResourseTest {
+  private static final String url = "/api/meal";
 
   @Autowired
   private MealRepository repo;
@@ -102,4 +107,7 @@ public class MealControllerTest {
     long after = repo.count();
     assertEquals(before-1, after);
    }
+
+
+   
 }

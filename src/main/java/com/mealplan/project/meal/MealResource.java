@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mealplan.project.meal.dao.Meal;
+
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/meal")
-public class MealRestController {
+@RequestMapping("/api/meal")
+public class MealResource {
   @Autowired
   private MealService service;
 
@@ -37,8 +39,8 @@ public class MealRestController {
   }
 
   @PostMapping 
-  public Meal save (@RequestBody Meal meal){
-    return service.save(meal);
+  public Meal create (@RequestBody Meal meal){
+    return service.create(meal);
 
   }
 
@@ -48,16 +50,16 @@ public class MealRestController {
   }
 
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return errors;
-    }    
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+      Map<String, String> errors = new HashMap<>();
+      ex.getBindingResult().getAllErrors().forEach((error) -> {
+          String fieldName = ((FieldError) error).getField();
+          String errorMessage = error.getDefaultMessage();
+          errors.put(fieldName, errorMessage);
+      });
+      return errors;
+  }    
 
 
 }
