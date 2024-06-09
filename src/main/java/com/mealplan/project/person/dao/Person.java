@@ -1,9 +1,9 @@
-package com.mealplan.project.person;
+package com.mealplan.project.person.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mealplan.project.meal.Meal;
+import com.mealplan.project.meal.dao.Meal;
 import com.mealplan.project.mealplan.MealPlan;
 
 import jakarta.persistence.Entity;

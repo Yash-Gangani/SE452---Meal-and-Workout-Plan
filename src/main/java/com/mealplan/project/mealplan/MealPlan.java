@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
-import com.mealplan.project.meal.Meal;
+import com.mealplan.project.meal.dao.Meal;
 
 @Data
 @Entity

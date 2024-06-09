@@ -1,4 +1,4 @@
-package com.mealplan.project.person;
+package com.mealplan.project.person.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
