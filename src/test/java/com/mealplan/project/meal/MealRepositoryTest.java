@@ -10,21 +10,26 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
+
+import com.mealplan.project.meal.dao.Meal;
+import com.mealplan.project.meal.dao.MealRepository;
+import com.mealplan.project.meal.dao.MealType;
+
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = Replace.ANY)
 @SpringBootTest
 public class MealRepositoryTest {
   @Autowired
   private MealRepository repo;
-  @Autowired
-  private NutritionRepository repoN;
+
+
 
   @Test
   public void testLombok(){
-    Nutrition n1 = Nutrition.builder().calories(500).fat(20).sugar(5).build();
-    Meal m1 = Meal.builder().t(MealType.NORMAL).nutrition(n1).build();
+ 
+    Meal m1 = Meal.builder().t(MealType.NORMAL).calories(500).fat(13).sugar(12).build();
 
-    Integer cals = n1.getCalories();
+    Integer cals = m1.getCalories();
     MealType t = m1.getT();
 
     assertEquals(500, cals);
@@ -35,15 +40,9 @@ public class MealRepositoryTest {
   @Test
   public void testMealRepository(){
     long before = repo.count();
-    Nutrition n1 = Nutrition.builder().calories(500).fat(14).sugar(5).build();
-    repoN.save(n1);
-    Meal m1 = Meal.builder().t(MealType.NORMAL).nutrition(n1).build();
-   
-   
-
-    Nutrition n2 = Nutrition.builder().calories(400).fat(20).sugar(5).build();
-    repoN.save(n2);
-    Meal m2 = Meal.builder().t(MealType.NORMAL).nutrition(n2).build();
+  
+    Meal m1 = Meal.builder().t(MealType.NORMAL).calories(2001).fat(13).sugar(11).build();
+    Meal m2 = Meal.builder().t(MealType.NORMAL).calories(2002).fat(23).sugar(8).build();
 
     repo.save(m1);
     repo.save(m2);
@@ -61,7 +60,8 @@ public class MealRepositoryTest {
     repo.save(m3);
 
     Meal m4 = repo.findById(5).orElse(new Meal());
-    assertEquals(m3.getNutrition(), m4.getNutrition());
+    assertEquals(MealType.LOW_CARB, m4.getT());
+    
 
   }
 }

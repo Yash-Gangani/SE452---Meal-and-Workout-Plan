@@ -10,29 +10,36 @@
 </head>
 
 <body>
-  <div class=" container-fluid mx-2 my-4 " >
-    <div class="container p-2">
-      <h3 class="title">Add Meal</h3>
+  <div class=" container mx-2 my-4 " >
+    <div style="background-color: rgb(25, 28, 34);" class=" text-center jumbotron p-2 ">
+      <h1 class="display-4">Meal Page</h1>
+    </div>
+    <div class="container p-2 text-center">
+      <h3 class="p-2">Add Meal</h3>
       <form method="post" th:action="@{/meal}" th:object="${m}">
         <input class="input m-2" id="id" placeholder="" required th:field="*{id}" type="text" readonly />
-        <input class="input m-2" id="type" placeholder="Enter Meal Type" required th:field="*{t}" type="text" />
-        <input class="input m-2" id="nutrition" placeholder="Enter Nutrition" required th:field="*{nutrition}" type="text" />
-        <div class="field is-grouped">
+        <input class="input m-2" id="type" placeholder="Enter Meal Type*" required th:field="*{t}" type="text" />
+        <input class="input m-2" id="calories" placeholder="Calories" required th:field="*{calories}" type="text" />
+        <input class="input m-2" id="fat" placeholder="Fat" required th:field="*{fat}" type="text" />
+        <input class="input m-2" id="sugar" placeholder="Sugar" required th:field="*{sugar}" type="text" />
+        <div class="field is-grouped mt-2">
           <div class="control">
             <button class="mx-2 my-1 button is-link" th:text="${btnAddOrModifyLabel}"></button>
 
-          </div>
-          <div class="control">
+         
             <button class="mx-2 my-1 button is-link is-light">Cancel</button>
           </div>
         </div>
       </form>
     </div>
-
-    <div class="row text-center">
-      <h3 class="h3">Meal List</h3>
+    <p class="mx-5" style="font-size: 12px">*Meal Types: LOW_CARB, HEAVY_PROTEIN, NORMAL</p>
+    <hr class="my-5">
+    <div class="row ">
+      <div class="container-fluid text-center">
+        
+      <h3 class=" h3">Meal List</h3>
       
-      <div class="d-flex  justify-content-around">
+      <div class="d-flex  justify-content-around text-center">
        
         <div class="container" th:if="${#lists.isEmpty(meal)}">No Meals</div>
         <div class="container" th:unless="${#lists.isEmpty(meal)}">
@@ -40,24 +47,29 @@
             <tr>
               <th>Id</th>
               <th>Meal Type</th>
-              <th>Nutrition</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th>Calories</th>
+              <th>Fat</th>
+              <th>Sugar</th>
+              <th></th>
+          
             </tr>
             <tr th:each="m: ${meal}">
               <td th:text="${m.id}"></td>
               <td th:text="${m.t}"></td>
-              <td th:text="${m.nutrition}"></td>
-              <td><a th:href="'meal/edit/' + ${m.id}"><i class="btn btn-primary ml-2 ">Edit</i></a></td>
-              <td><a th:href="'meal/delete/' + ${m.id}"><i class="btn btn-danger ml-2 ">Delete</i></a></td>
+              <td th:text="${m.calories}"></td>
+              <td th:text="${m.fat}"></td>
+              <td th:text="${m.sugar}"></td>
+              <td style="width:auto"><a th:href="'meal/edit/' + ${m.id}"><i class="btn btn-primary">Edit</i></a>
+              <a th:href="'meal/delete/' + ${m.id}"><i class="btn btn-danger ms-3">Delete</i></a></td>
             </tr>
           </table>
-          <div>
-            <a href="/index.html" class="ms-5 btn btn-outline-primary">Home</a>
-          </div>
         </div>
         
       </div>
+      <hr class="my-5">
+          <div>
+            <a href="/index.html" class="btn btn-outline-primary">Home</a>
+          </div>
     </div>
   </div>
   

@@ -20,8 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mealplan.project.meal.dao.Meal;
 import com.mealplan.project.meal.dao.MealRepository;
 import com.mealplan.project.meal.dao.MealType;
-import com.mealplan.project.meal.dao.Nutrition;
-import com.mealplan.project.meal.dao.NutritionRepository;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -30,8 +29,6 @@ public class MealResourseTest {
 
   @Autowired
   private MealRepository repo;
-  @Autowired
-  private NutritionRepository repoN;
 
   @Autowired
   private MockMvc mvc;
@@ -58,20 +55,19 @@ public class MealResourseTest {
     var jsonResponse = response.andReturn().getResponse().getContentAsString();
     ArrayList<Meal> mealList = objectMapper.readValue(jsonResponse, new TypeReference<ArrayList<Meal>>(){});
     Integer id = mealList.get(0).getId();
-    Integer caloriesTest = mealList.get(0).getNutrition().getCalories();
+    Integer caloriesTest = mealList.get(0).getCalories();
     response = mvc.perform(MockMvcRequestBuilders.get(url+"/"+id));
     jsonResponse = response.andReturn().getResponse().getContentAsString();
     Meal meal =  objectMapper.readValue(jsonResponse, Meal.class);
-    assertEquals(caloriesTest, meal.getNutrition().getCalories());
+    assertEquals(caloriesTest, meal.getCalories());
     
   }
 
   @Test
   public void testAddMeal() throws Exception{
     var before = (int) repo.count();
-    Nutrition n1 = Nutrition.builder().calories(2500).fat(30).sugar(25).build();
-    repoN.save(n1);
-    Meal m1 = Meal.builder().t(MealType.NORMAL).nutrition(n1).build();
+ 
+    Meal m1 = Meal.builder().t(MealType.NORMAL).calories(2001).fat(13).sugar(11).build();
     String mealAsJson = objectMapper.writeValueAsString(m1);
 
     var request = MockMvcRequestBuilders.post(url);

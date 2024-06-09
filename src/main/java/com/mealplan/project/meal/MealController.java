@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/meal")
 public class MealController {
+
   @Autowired
   MealService service;
 
@@ -50,14 +51,16 @@ public class MealController {
   public String save(@ModelAttribute Meal meal, HttpSession session) {
       if (meal.getId() == null || meal.getId() == 0){
         
-          service.create(Meal.builder().t(meal.getT()).nutrition(meal.getNutrition()).build());
+          service.create(Meal.builder().t(meal.getT()).fat(meal.getFat()).calories(meal.getCalories()).sugar(meal.getSugar()).build());
       }
      else {
           var editMeal = service.getMealById(meal.getId());
           editMeal.setT(meal.getT());
-          editMeal.setNutrition(meal.getNutrition());
+          editMeal.setCalories(meal.getCalories());
+          editMeal.setFat(meal.getFat());
+          editMeal.setSugar(meal.getSugar());
           service.create(editMeal);
-          session.setAttribute("meal", null);
+          session.setAttribute("m", null);
       }
       return "redirect:/meal";
   }    

@@ -40,7 +40,7 @@ public class MealService {
     m1 = repo.findById(id).orElseThrow();
     logger.info("Found meal id {}", id);
   }catch(Exception e){
-    logger.error("Repo call findById({})",id, e);
+    logger.error("Error: Repo call findById({})",id, e);
   }
   logger.debug("Successfully returning meal id {}", id);
   return m1;
@@ -53,7 +53,7 @@ public class MealService {
     logger.info("Successfully saved meal {}", meal.toString());
   }
   catch(Exception e){
-    logger.error("Saving to the meal repo meal {}", meal.toString());
+    logger.error("Error saving to the meal repo meal {}", meal.toString());
   }
  
   logger.debug("End saving into Meal");

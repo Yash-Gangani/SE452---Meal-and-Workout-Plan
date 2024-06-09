@@ -16,16 +16,13 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import com.mealplan.project.meal.dao.Meal;
 import com.mealplan.project.meal.dao.MealType;
-import com.mealplan.project.meal.dao.Nutrition;
-import com.mealplan.project.meal.dao.NutritionRepository;
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = Replace.ANY)
 @SpringBootTest
 public class MealServiceTest {
   @Autowired
   private MealService service;
-  @Autowired
-  private NutritionRepository repoN;
+
 
   @Test
   public void testInitListSize(){
@@ -37,9 +34,8 @@ public class MealServiceTest {
   @Test
   public void testAddMeal(){
     long before = service.list().size();
-    Nutrition n1 = Nutrition.builder().calories(650).fat(25).build();
-    repoN.save(n1);
-    service.create(Meal.builder().t(MealType.LOW_CARB).nutrition(n1).build());
+   
+    service.create(Meal.builder().t(MealType.NORMAL).calories(2001).fat(13).sugar(11).build());
     long after = service.list().size();
     assertEquals(before+1, after);
   }

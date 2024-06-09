@@ -19,14 +19,14 @@
 | Yash Gangani | |
 | Shireesha Hanmantharaopet | MealPlan package and test packages |
 | Saad Mansuri | |
-| John Smillie | - Person and Meal packages <br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - h2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration<br/> - Logback.xml file<br/> - config files and settings: dev and prod<br/> - OpenAPI integration<br/> |
+| John Smillie | - Person and Meal packages <br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - h2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration<br/> - Logback.xml file<br/> - config files and settings: dev and prod<br/> - OpenAPI integration<br/> - Thymeleaf integration<br/> |
 
 
 <br/>
 
 
 ## Decision Made
-| # | Area  | Decision | Why using it? | 
+| # | Area  | Decision | Reason | 
 | -- | -- | -- | -- |
 | 1 | IDE | VS Code |Easy to use and install extensions.| 
 | 2 | Front-End design  | ReactJS, HTML5,CSS3 | Simple implementation for Web apps. |
@@ -34,11 +34,11 @@
 | 4 | Dependency Management | Maven | Widespread usage and simple configuration. |
 | 5 | In-memory database | H2 | Simple volatile storage for the development environment |
 | 6 | Logging | Logback | Quick upstart (built into the Spring Web dependency) |
-| 7 | Automated start / stop actions | data.sql and auto create / drop | |
+| 7 | Automated start / stop actions | data.sql and auto create / drop | Create and drop tables with seeded data when running in development environment |
 | 8 | Non-volatile persistence | Oracle | CSC453 Oracle DB still available. Compatibility with JPA annoatations |
-| 9 | NoSQL persistence | TBD |  |
+| 9 | UI | Thymeleaf |  Inclusive front-end engine for Spring Boot |
 | 10 | Build and Deploy | Github Actions | CI with build analysis for each push to the repo |
-| 11 | Documentation | Spring OpenAPI | runtime publishing of REST documentation |
+| 11 | Documentation | Spring OpenAPI | runtime publishing of REST API documentation |
 
 
 <br>
