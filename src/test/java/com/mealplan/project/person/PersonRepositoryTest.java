@@ -20,12 +20,14 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
-import com.mealplan.project.meal.Meal;
-import com.mealplan.project.meal.MealRepository;
-import com.mealplan.project.meal.MealType;
-import com.mealplan.project.meal.Nutrition;
-import com.mealplan.project.meal.NutritionRepository;
+
+import com.mealplan.project.meal.dao.Meal;
+import com.mealplan.project.meal.dao.MealRepository;
+import com.mealplan.project.meal.dao.MealType;
 import com.mealplan.project.mealplan.MealPlanRepository;
+import com.mealplan.project.person.dao.Gender;
+import com.mealplan.project.person.dao.Person;
+import com.mealplan.project.person.dao.PersonRepository;
 
 
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -40,9 +42,7 @@ public class PersonRepositoryTest {
   private MealRepository mealRepo;
   @Autowired
   
-  private NutritionRepository nRepo;
-  @Autowired
-  
+
   private MealPlanRepository mpRepo;
   
   @BeforeEach
@@ -130,9 +130,7 @@ public class PersonRepositoryTest {
     Person p2 = personRepo.findById(1).orElseThrow();
     assertEquals(before+1, p2.getMeals().size());
 
-    Nutrition n1 = Nutrition.builder().id(3).calories(1900).fat(13).sugar(8).build();
-    nRepo.save(n1);
-    Meal m2 = Meal.builder().id(3).t(MealType.PROTEIN_HEAVY).nutrition(n1).build();
+    Meal m2 = Meal.builder().id(3).t(MealType.PROTEIN_HEAVY).build();
     mealRepo.save(m2);
     assertEquals(3, mealRepo.count());
 

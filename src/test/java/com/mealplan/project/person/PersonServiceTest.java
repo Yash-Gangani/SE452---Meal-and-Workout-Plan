@@ -10,8 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
-import com.mealplan.project.meal.Meal;
 import com.mealplan.project.meal.MealService;
+import com.mealplan.project.meal.dao.Meal;
+import com.mealplan.project.person.dao.Person;
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase(replace = Replace.ANY)
 @SpringBootTest
@@ -19,8 +20,6 @@ public class PersonServiceTest {
   
   @Autowired
   private PersonService personService;
-  @Autowired
-  private MealService mealService;
 
   @Test
   public void testAddPerson(){
@@ -37,9 +36,9 @@ public class PersonServiceTest {
 
     long sizeB4 = personService.list().size();
 
-    personService.save(p1);
-    personService.save(p2);
-    personService.save(p3);
+    personService.create(p1);
+    personService.create(p2);
+    personService.create(p3);
 
     assertEquals(sizeB4+3, personService.list().size());
   }
@@ -51,11 +50,11 @@ public class PersonServiceTest {
     p1.setName("Harry");
     p1.setAge(29);
   
-    personService.save(p1);
+    personService.create(p1);
 
     Person p2 = personService.getPersonById(1);
     p2.setAge(45);
-    personService.save(p2);
+    personService.create(p2);
 
     Person p3 = personService.getPersonById(1);
 
@@ -63,36 +62,7 @@ public class PersonServiceTest {
     assertEquals(45, p3.getAge());
   }
 
-  @Test
-  public void testAddMealToList(){
-    long before = personService.list().size();
-    Meal m1 = mealService.getMealById(1);
-    Meal m2 = mealService.getMealById(2);
-    Person p1 = new Person();
-    p1.setName("Harry");
-    p1.setAge(29);
-    p1.getMeals().add(m1);
-    personService.save(p1);
-    personService.addMeal(p1, m2);
-    assertEquals(2, personService.list().get(personService.list().size()-1).getMeals().size());
-    assertEquals(before+1, personService.list().size());
-  }
-
-  @Test
-  public void testDeleteMealFromList(){
-    long before = personService.list().size();
-    Meal m1 = mealService.getMealById(1);
-    Meal m2 = mealService.getMealById(2);
-    Person p1 = new Person();
-    p1.setName("Harry");
-    p1.setAge(29);
-    p1.getMeals().add(m1);
-    personService.save(p1);
-    personService.deleteMeal(p1, m1);
-    assertEquals(0, personService.list().get(0).getMeals().size());
-    assertEquals(before+1, personService.list().size());
-  }
-
+  
   @Test
   public void testDeletePerson(){
     Person p1 = new Person();
@@ -107,9 +77,9 @@ public class PersonServiceTest {
 
     long sizeB4 = personService.list().size();
 
-    personService.save(p1);
-    personService.save(p2);
-    personService.save(p3);
+    personService.create(p1);
+    personService.create(p2);
+    personService.create(p3);
 
     assertEquals(sizeB4+3, personService.list().size());
 
@@ -133,9 +103,9 @@ public class PersonServiceTest {
 
     long sizeB4 = personService.list().size();
 
-    personService.save(p1);
-    personService.save(p2);
-    personService.save(p3);
+    personService.create(p1);
+    personService.create(p2);
+    personService.create(p3);
 
     assertEquals(sizeB4+3, personService.list().size());
 
