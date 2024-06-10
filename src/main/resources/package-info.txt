@@ -1,0 +1,9 @@
+
+
+John Smillie:
+- views
+- config files
+- environments: dev and prod
+- database configuration: h2 and Oracle
+- database seeding
+- logback.xml
