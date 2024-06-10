@@ -81,7 +81,6 @@ public class PersonController {
   
     @GetMapping("/add")
     public String addMeal(@RequestParam(name="pid") Integer pid, @RequestParam(name="mid") Integer mid, HttpSession session ){
-        System.out.println("*********************   ID = " + pid + "************************************** " +mid);
         service.addMealToMealList(pid, mid);
         Person p = service.getPersonById(pid);
         session.setAttribute("p", null);
