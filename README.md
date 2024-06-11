@@ -1,14 +1,26 @@
 # SE452 Object-Oriented Enterprise Applications
 
 ## Depaul University / Spring 2024 / Group 6
+> **Run on local machine.**
+>
+> **Execute:** java -jar /target/project-[version number]-SNAPSHOT.jar
+>
+> **Dev endpoint:** https://localhost/8001
+>
+> **Prod endpoint:** https://localhost/8011
+>
+> **H2 Console (dev environment only):** /h2-console
+>
+> **API Documentation:** /swagger-ui-custom.html
+
 
 ### Project Overview: 
-> Meal Planning App
-- The app is preloaded with meals, meal plans
-- Users can select a predefined meal plan
-- Users can add/delete meals to be stored with their profile
-- Users can create/edit/delete meal plans
-- Users can change their current meal plan
+#### Meal and Workout Planning App Intended Scope:
+- The app is preloaded with meals, workouts, meal plans, and workout plans
+- Users can select a predefined meal plan or workout plan
+- Users can add/delete meals and workouts to be stored with their profile
+- Users can create/edit/delete meal plans and workout plans
+- Users can change their current meal plan or workout plan
 - Admins have full CRUD access to the predefined data
 
 
@@ -19,7 +31,7 @@
 | Yash Gangani | |
 | Shireesha Hanmantharaopet | MealPlan package and test packages |
 | Saad Mansuri | |
-| John Smillie | - Person and Meal packages <br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - h2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration<br/> - Logback.xml file<br/> - config files and settings: dev and prod<br/> - OpenAPI integration<br/> - Thymeleaf integration<br/> |
+| John Smillie | - Person and Meal packages - full CRUD operations with UI<br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - H2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration and maven.yml <br/> - Logback.xml file integration<br/> - config files and settings: dev and prod<br/> - OpenAPI integration<br/> - Thymeleaf integration<br/> - UI Admin Dashboard: add/edit/delete users and meals<br> - Person and Meal template pages and static index.html utilizing Bootstrap CSS</br> - Javadocs |
 
 
 <br/>
@@ -38,7 +50,7 @@
 | 8 | Non-volatile persistence | Oracle | CSC453 Oracle DB still available. Compatibility with JPA annoatations |
 | 9 | UI | Thymeleaf |  Inclusive front-end engine for Spring Boot |
 | 10 | Build and Deploy | Github Actions | CI with build analysis for each push to the repo |
-| 11 | Documentation | Spring OpenAPI | runtime publishing of REST API documentation |
+| 11 | Documentation | Spring OpenAPI  </br> Javadocs | Runtime publishing of REST API documentation.</br> For developer knowledge of classes and uses. |
 
 
 <br>
@@ -46,10 +58,11 @@
 ## Implementation Table
 | **Key Features** | **Implemented** |
 | --| -- |
-| The database is initialized with preset meals/meal plans and workouts/ workout plans | no |
-| A user can select a preset meal to add to their meal list| no |
-| A user can add a meal or workout to their saved lists | no |
-| A user can create a custom meal plan or workout plan with existing meals or workouts | no |
+| The database is initialized with preset meals | yes (JS) |
+| A web endpoint is available as a dashboard for administrators | yes (JS)|
+| An admin can add/edit/delete users| yes (JS)|
+| An admin can add/edit/delete meals| yes (JS) |
+| An admin can add meals to the user's meal list | yes (JS) |
 
 <br/>
 
