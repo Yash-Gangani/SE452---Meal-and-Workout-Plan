@@ -95,7 +95,7 @@ public class MealResourseTest {
     var jsonResponse = response.andReturn().getResponse().getContentAsString();
 
     ArrayList<Meal> mealList = objectMapper.readValue(jsonResponse, new TypeReference<ArrayList<Meal>>(){});
-    Integer id = mealList.get(0).getId();
+    Integer id = mealList.get(mealList.size()-1).getId();
     
     var request = MockMvcRequestBuilders.delete(url+"/"+id);
     response = mvc.perform(request);
