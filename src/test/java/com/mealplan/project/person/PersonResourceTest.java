@@ -54,7 +54,7 @@ public class PersonResourceTest {
    ResultActions response = mvc.perform(MockMvcRequestBuilders.get(url));
    var jsonResponse = response.andReturn().getResponse().getContentAsString();
    ArrayList<Person> personList = objectMapper.readValue(jsonResponse, new TypeReference<ArrayList<Person>>(){});
-   Integer id = personList.get(0).getId();
+   Integer id = personList.get(personList.size()-1).getId();
    
    response = mvc.perform(MockMvcRequestBuilders.get(url+"/"+id));
    response.andExpect(MockMvcResultMatchers.status().isOk());
