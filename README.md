@@ -31,7 +31,7 @@
 | Yash Gangani | |
 | Shireesha Hanmantharaopet | MealPlan package and test packages |
 | Saad Mansuri | |
-| John Smillie | - Person and Meal packages - full CRUD operations with UI<br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - H2 database setup and connection<br/> - Oracle database setup and connection<br/> - GitHub Actions integration and maven.yml <br/> - Logback.xml file integration<br/> - config files and settings: dev and prod<br/> - OpenAPI integration<br/> - Thymeleaf integration<br/> - UI Admin Dashboard: add/edit/delete users and meals<br> - Person and Meal template pages and static index.html utilizing Bootstrap CSS</br> - Javadocs |
+| John Smillie | - Person and Meal packages - full CRUD operations with UI<br/> - Person/Meal test packages<br/> - diagrams<br/> - data.sql for testing<br/> - H2 database setup and connection<br/> - Oracle database setup and connection<br/> - Seeded Oracle production DB predefined objects </br> - GitHub Actions integration and maven.yml <br/> - Logback.xml file integration<br/> - config files and settings: dev and prod<br/> - OpenAPI integration<br/> - Thymeleaf integration<br/> - UI Admin Dashboard: add/edit/delete users and meals<br> - Person and Meal template pages and static index.html utilizing Bootstrap CSS</br> - Javadocs |
 
 
 <br/>
